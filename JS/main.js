@@ -46,12 +46,14 @@ function generateItems() {
 generateItems()
 
 let isStarted = false
+let isFirstStart = true
 
 function start() {
   if (isStarted) return
   else isStarted = true
 
-  generateItems()
+  if (!isFirstStart) generateItems()
+  else isFirstStart = false
   const list = document.querySelector('.list')
 
   setTimeout(() => {
@@ -65,5 +67,21 @@ function start() {
     isStarted = false
     item.classList.add('active')
     const data = JSON.parse(item.getAttribute('data-item'))
-  })
+    
+    console.log(data);
+  }, {once: true})
 }
+
+let FPSCounter = 0
+function FPSIncrementer() {
+  FPSCounter++
+
+  requestAnimationFrame(arguments.callee)
+}; FPSIncrementer()
+
+function FPSViewer() {
+  document.querySelector('.FPS').innerHTML = FPSCounter * 2
+  FPSCounter = 0
+
+  setTimeout(arguments.callee, 500)
+}; FPSViewer()

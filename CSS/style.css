@@ -14,6 +14,20 @@ body {
   color: white;
 }
 
+.FPS {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  font-weight: bold;
+  color: white;
+}
+.FPS::before {
+  content: "FPS: ";
+  font-size: 0.8em;
+  opacity: 0.5;
+}
+
 .app {
   position: relative;
   width: 650px;
@@ -74,11 +88,12 @@ body {
   border: none;
   border-radius: 5px;
   outline: none;
-  background: #58a6ff;
+  background: #eb5146;
   color: inherit;
   font-size: 16px;
   font-weight: 500;
   transition: opacity 0.2s ease;
+  box-shadow: 0 0 30px 0 rgba(255, 118, 118, 0.2);
   cursor: pointer;
 }
 .app .start:hover {
