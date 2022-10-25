@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: content-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #13161a;
+  color: white;
+}
+
+.app {
+  position: relative;
+  width: 650px;
+  background: #1b1f24;
+  border-radius: 10px;
+
+  .pointer {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translate3d(-50%, -25px, 0);
+    height: 50px;
+    filter: drop-shadow(0 0 20px rgba(230, 174, 174, 0.3));
+  }
+
+  .scope {
+    overflow: hidden;
+
+    .list {
+      position: relative;
+      display: inline-flex;
+      left: 0;
+      transform: translate3d(0, 0, 0);
+      list-style: none;
+      transition: 5s cubic-bezier(.21,.53,.29,.99);
+
+      &__item {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        $sizes: 200px;
+        width: $sizes;
+        height: calc($sizes * .8);
+        opacity: .5;
+        transition: .3s ease;
+
+        &:nth-child(2n) {
+          background: rgba(0, 0, 0, .1);
+        }
+
+        &.active {
+          opacity: 1;
+
+          img {
+            transform: scale(1.05);
+          }
+        }
+        
+        img {
+          width: 80%;
+          height: 80%;
+          object-fit: contain;
+          transition: .3s ease;
+        }
+      }
+    }
+  }
+
+  .start {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate3d(-50%, 20px, 0);
+    padding: 8px 25px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: #58a6ff;
+    color: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    transition: opacity .2s ease;
+    cursor: pointer;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+}
